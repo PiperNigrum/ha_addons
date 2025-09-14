@@ -1,0 +1,7 @@
+{
+    "build_from": {
+        "armv7": "technitium/dns-server:latest",
+        "aarm64": "technitium/dns-server:latest",
+        "amd64": "technitium/dns-server:latest"
+    }
+}
