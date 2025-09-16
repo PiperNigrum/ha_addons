@@ -1,7 +1,7 @@
 {
-    "build_from": {
-        "armv7": "technitium/dns-server:latest",
-        "aarm64": "technitium/dns-server:latest",
-        "amd64": "technitium/dns-server:latest"
-    }
+  "build_from": {
+    "armv7": "ghcr.io/home-assistant/armv7-base:latest",
+    "aarch64": "ghcr.io/home-assistant/aarch64-base:latest",
+    "amd64": "ghcr.io/home-assistant/amd64-base:latest"
+  }
 }

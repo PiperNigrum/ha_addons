@@ -1,14 +1,5 @@
 {
-    "name": "PiperNigrums' Addon Repository",
-    "url": "https://github.com/PiperNigrum/ha_addons",
-    "maintainer": "PiperNigrum",
-    "addons": [
-        {
-            "name": "Technitium DNS",
-            "slug": "technitium_dns",
-            "description": "Technitium DNS Server als Home Assistant Addon",
-            "url": "https://github.com/PiperNigrum/ha_addons/tree/main/technitium_dns",
-            "version": "1.0.0"
-        }
-    ]
+  "name": "PiperNigrum Addons",
+  "url": "https://github.com/PiperNigrum/ha_addons",
+  "maintainer": "PiperNigrum"
 }
