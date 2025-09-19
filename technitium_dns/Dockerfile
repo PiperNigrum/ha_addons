@@ -5,7 +5,16 @@ ENV LANG C.UTF-8
 
 RUN apk add --no-cache curl bash
 
-COPY run.sh /run.sh
-RUN chmod +x /run.sh
+# Architektur erkennen und passende Version laden
+RUN ARCH=$(uname -m) && \
+    case "$ARCH" in \
+      armv7l) URL="dns-server-linux-arm.tar.gz" ;; \
+      aarch64) URL="dns-server-linux-arm64.tar.gz" ;; \
+      *) echo "Unsupported architecture: $ARCH" && exit 1 ;; \
+    esac && \
+    curl -L "https://github.com/TechnitiumSoftware/DnsServer/releases/latest/download/$URL" \
+    | tar xz -C /opt
 
-CMD ["/run.sh"]
+WORKDIR /opt
+
+CMD ["/opt/start.sh"]
