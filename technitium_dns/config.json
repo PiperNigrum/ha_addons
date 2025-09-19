@@ -2,13 +2,29 @@
   "name": "Technitium DNS",
   "version": "1.0.0",
   "slug": "technitium_dns",
-  "description": "Technitium DNS Server für Home Assistant",
+  "description": "Technitium DNS Server als Home Assistant Add-on",
+  "url": "https://github.com/PiperNigrum/ha_addons/tree/main/technitium_dns",
   "startup": "services",
   "boot": "auto",
-  "url": "https://github.com/PiperNigrum/ha_addons/tree/main/technitium_dns",
-  "arch": ["armv7", "amd64", "aarch64"],
-  "image": "technitium/dns-server",
-  "ingress": false,
+  "ingress": true,
+  "ingress_port": 5380,
   "panel_icon": "mdi:dns",
+  "panel_title": "Technitium DNS",
+  "arch": [
+    "armv7",
+    "aarch64"
+  ],
+  "ports": {
+    "53/tcp": 53,
+    "53/udp": 53,
+    "5380/tcp": 5380
+  },
+  "map": [
+    "config:rw",
+    "ssl:rw"
+  ],
+  "options": {},
+  "schema": {},
   "host_network": true
 }
+
