@@ -1,8 +1,8 @@
-#!/usr/bin/with-contenv bash
+#!/usr/bin/with-contenv sh
 # Starte Technitium DNS
 
-source /opt/scripts/common.sh
-source /opt/scripts/init.sh
+. /opt/scripts/common.sh
+. /opt/scripts/init.sh
 
 log_info "Starte Technitium DNS Server..."
 

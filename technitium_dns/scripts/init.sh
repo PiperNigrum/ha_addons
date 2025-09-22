@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
-source /opt/scripts/common.sh
+
+#!/bin/sh
+. /opt/scripts/common.sh
 
 log_info "Initialisiere Technitium DNS Add-on..."
 

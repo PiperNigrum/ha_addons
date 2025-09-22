@@ -6,10 +6,12 @@ ARG BUILD_ARCH
 ARG BUILD_VERSION
 
 # Labels
-LABEL \  io.hass.name="Technitium DNS" \  io.hass.description="Technitium DNS Server als Home Assistant Add-on" \  io.hass.arch="${BUILD_ARCH}" \  io.hass.version="${BUILD_VERSION}" \  maintainer="PiperNigrum"
-
-# Tools für Skripte
-RUN apt-get update && \    apt-get install -y --no-install-recommends bash curl jq tzdata && \    rm -rf /var/lib/apt/lists/*
+LABEL \
+  io.hass.name="Technitium DNS" \
+  io.hass.description="Technitium DNS Server als Home Assistant Add-on" \
+  io.hass.arch="${BUILD_ARCH}" \
+  io.hass.version="${BUILD_VERSION}" \
+  maintainer="PiperNigrum"
 
 # Skripte und Supervisor-Dateien
 COPY rootfs/ /
