@@ -7,6 +7,10 @@
   "arch": ["armv7", "aarch64", "amd64"],
   "startup": "services",
   "boot": "auto",
+  "map": [
+    "addon_config:rw",
+    "share:rw"
+  ],
   "ports": {
     "5380/tcp": 5380,
     "53/tcp": 53,
