@@ -5,9 +5,9 @@
 log_info "Starte Technitium DNS Server..."
 
 # Sicherstellen, dass persistenter Ordner existiert
-if [ ! -d /data ]; then
-    log_info "Persistenter Ordner /data existiert nicht, lege an..."
-    mkdir -p /data
+if [ ! -d /addon_config ]; then
+    log_info "Persistenter Ordner /addon_config existiert nicht, lege an..."
+    mkdir -p /addon_config
 fi
 
 # /etc/dns auf /data linken, damit Technitium weiterhin /etc/dns nutzt
@@ -17,7 +17,7 @@ if [ -d /etc/dns ]; then
 fi
 
 log_info "Erstelle Symlink /etc/dns -> /data"
-ln -s /data /etc/dns
+ln -s /addon_config /etc/dns
 
 # Technitium DNS starten
 exec /app/dns/dnsserver
