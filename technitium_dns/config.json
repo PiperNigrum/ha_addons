@@ -12,7 +12,6 @@
     "53/tcp": 53,
     "53/udp": 53
   },
-  "map": ["config", "ssl"],
   "options": {},
   "schema": {}
 }
