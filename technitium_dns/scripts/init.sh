@@ -1,10 +1,9 @@
-
-#!/bin/sh
+#!/usr/bin/with-contenv sh
 . /opt/scripts/common.sh
 
 log_info "Initialisiere Technitium DNS Add-on..."
 
-if [ ! -d /config ]; then
-    log_warn "Kein Config-Ordner vorhanden – lege an..."
-    mkdir -p /config
+if [ ! -d /data ]; then
+    log_info "Lege persistenten Ordner /data an..."
+    mkdir -p /data
 fi

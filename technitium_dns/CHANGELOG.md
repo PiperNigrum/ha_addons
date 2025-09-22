@@ -1,6 +1,6 @@
-# Changelog – Technitium DNS Add-on
+# Changelog – Technitium DNS Add-on (Custom Multi-Arch Image)
 
 ## 1.0.0
-- Erstveröffentlichung
-- Basierend auf offiziellem Technitium DNS Image
+- Erstveröffentlichung mit Home Assistant Base Image
+- Persistenter Ordner: /data (Add-on Storage)
 - Unterstützt armv7, aarch64, amd64
