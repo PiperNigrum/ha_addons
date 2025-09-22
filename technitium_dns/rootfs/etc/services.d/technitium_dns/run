@@ -2,7 +2,8 @@
 . /opt/scripts/common.sh
 . /opt/scripts/init.sh
 
-log_info "Starte Technitium DNS Server (Custom Multi-Arch Image)..."
+log_info "Starte Technitium DNS Server (Custom Image)..."
 log_info "Persistenter Ordner: /data"
 
+# Technitium direkt mit AppDataPath starten
 exec /app/dns/dnsserver --appdatafolder /data
