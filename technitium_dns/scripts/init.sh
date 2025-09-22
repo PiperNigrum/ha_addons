@@ -3,7 +3,6 @@
 
 log_info "Initialisiere Technitium DNS Add-on..."
 
-# Persistenter Ordner sicherstellen
 if [ ! -d /data ]; then
     log_info "Lege persistenten Ordner /data an..."
     mkdir -p /data

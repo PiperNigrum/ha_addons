@@ -1,30 +1,34 @@
-# Multi-Arch Base Image von Debian slim
-ARG BUILD_FROM=debian:bookworm-slim
+# Home Assistant Base Image (Multi-Arch, Alpine)
+ARG BUILD_FROM=ghcr.io/home-assistant/aarch64-base:latest
 FROM ${BUILD_FROM}
 
-# Build-Argumente
-ARG BUILD_ARCH
-ARG BUILD_VERSION
-
-# Labels
-LABEL \  io.hass.name="Technitium DNS" \  io.hass.description="Technitium DNS Server als Home Assistant Add-on" \  io.hass.arch="${BUILD_ARCH}" \  io.hass.version="${BUILD_VERSION}" \  maintainer="PiperNigrum"
-
-# Tools für Skripte
-RUN apt-get update &&     apt-get install -y --no-install-recommends curl unzip tzdata &&     rm -rf /var/lib/apt/lists/*
-
-# Arbeitsverzeichnis
 WORKDIR /app
 
-# Offizielles Technitium DNS Binary herunterladen
+ARG BUILD_ARCH
 ARG TECHNITIUM_VERSION=2025.09.22
-RUN curl -L -o dnsserver.zip https://github.com/TechnitiumSoftware/DnsServer/releases/download/${TECHNITIUM_VERSION}/DnsServer_${TECHNITIUM_VERSION}_Linux_x64.zip &&     unzip dnsserver.zip -d dns &&     rm dnsserver.zip
 
-# Skripte und Supervisor-Dateien
+# Alpine: Tools installieren
+RUN apk add --no-cache curl unzip tzdata
+
+# Architekturabhängig die richtige Binary laden
+RUN if [ "$BUILD_ARCH" = "amd64" ]; then \
+        ARCH=x64; \
+    elif [ "$BUILD_ARCH" = "aarch64" ]; then \
+        ARCH=arm64; \
+    elif [ "$BUILD_ARCH" = "armv7" ]; then \
+        ARCH=arm32; \
+    else \
+        echo "Unsupported architecture $BUILD_ARCH"; exit 1; \
+    fi && \
+    curl -L -o dnsserver.zip \
+        https://github.com/TechnitiumSoftware/DnsServer/releases/download/${TECHNITIUM_VERSION}/DnsServer_${TECHNITIUM_VERSION}_Linux_${ARCH}.zip && \
+    unzip dnsserver.zip -d dns && \
+    rm dnsserver.zip
+
+# Skripte kopieren
 COPY rootfs/ /
 COPY scripts/ /opt/scripts/
 
-# Rechte setzen
 RUN chmod +x /opt/scripts/*.sh /etc/services.d/*/run /etc/services.d/*/finish
 
-# Entry Point (Supervisor startet über run-Skript)
 CMD ["/etc/services.d/technitium_dns/run"]
