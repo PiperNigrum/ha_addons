@@ -1,5 +1,8 @@
 {
   "name": "Technitium DNS",
+  "ports": {
+    "5380/tcp": 5380
+  },
   "version": "1.0.0",
   "slug": "technitium_dns",
   "description": "Technitium DNS Server als Home Assistant Add-on",
