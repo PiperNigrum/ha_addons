@@ -1,10 +1,23 @@
 #!/usr/bin/with-contenv sh
-# Starte Technitium DNS
-
 . /opt/scripts/common.sh
 . /opt/scripts/init.sh
 
 log_info "Starte Technitium DNS Server..."
 
-# Standardstart aus dem offiziellen Image
-exec /app/dns/dnsserver --appdatafolder /data
+# Sicherstellen, dass persistenter Ordner existiert
+if [ ! -d /data ]; then
+    log_info "Persistenter Ordner /data existiert nicht, lege an..."
+    mkdir -p /data
+fi
+
+# /etc/dns auf /data linken, damit Technitium weiterhin /etc/dns nutzt
+if [ -d /etc/dns ]; then
+    log_info "Lösche bestehenden /etc/dns Ordner..."
+    rm -rf /etc/dns
+fi
+
+log_info "Erstelle Symlink /etc/dns -> /data"
+ln -s /data /etc/dns
+
+# Technitium DNS starten
+exec /app/dns/dnsserver
