@@ -3,21 +3,7 @@
 . /opt/scripts/init.sh
 
 log_info "Starte Technitium DNS Server..."
+log_info "Persistenter Ordner: $APPDATAPATH"
 
-# Sicherstellen, dass persistenter Ordner existiert
-if [ ! -d /addon_config ]; then
-    log_info "Persistenter Ordner /addon_config existiert nicht, lege an..."
-    mkdir -p /addon_config
-fi
-
-# /etc/dns auf /data linken, damit Technitium weiterhin /etc/dns nutzt
-if [ -d /etc/dns ]; then
-    log_info "Lösche bestehenden /etc/dns Ordner..."
-    rm -rf /etc/dns
-fi
-
-log_info "Erstelle Symlink /etc/dns -> /data"
-ln -s /addon_config /etc/dns
-
-# Technitium DNS starten
+# Technitium DNS starten, nutzt APPDATAPATH automatisch
 exec /app/dns/dnsserver

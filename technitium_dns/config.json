@@ -11,6 +11,9 @@
     "addon_config:rw",
     "share:rw"
   ],
+  "environment": {
+    "APPDATAPATH": "/data"
+  },
   "ports": {
     "5380/tcp": 5380,
     "53/tcp": 53,
