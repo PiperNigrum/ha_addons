@@ -10,8 +10,8 @@
   # Symlink sicherstellen
   if [ ! -L /etc/dns ]; then
       rm -rf /etc/dns
-      ln -s /data /etc/dns
-      /rootfs/etc/services.d/technitium_dns/scripts/log.sh "[INFO] Symlink /etc/dns -> /data gesetzt"
+      ln -s /config /etc/dns
+      /rootfs/etc/services.d/technitium_dns/scripts/log.sh "[INFO] Symlink /etc/dns -> /config gesetzt"
   fi
 
   /rootfs/etc/services.d/technitium_dns/scripts/log.sh "[INFO] Starte Technitium DNS Server"
