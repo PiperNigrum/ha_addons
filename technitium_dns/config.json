@@ -1,6 +1,6 @@
 {
   "name": "Technitium DNS",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "slug": "technitium_dns",
   "description": "Technitium DNS Server Add-on",
   "arch": [
@@ -11,15 +11,30 @@
   "startup": "services",
   "boot": "auto",
   "ports": {
-    "5380/tcp": 5380,
-    "53/tcp": 53,
-    "53/udp": 53
+    "5380/tcp": null,
+    "53443/tcp": null,
+    "53/tcp": null,
+    "53/udp": null
+  },
+  "ports_description": {
+    "53/tcp": "DNS (TCP)",
+    "53/udp": "DNS (UDP)",
+    "5380/tcp": "Weboberfläche (HTTP)",
+    "53443/tcp": "Weboberfläche (HTTPS)"
   },
   "map": [
     "data:rw",
     "addon_config:rw"
   ],
-  "options": {},
-  "schema": {},
+  "options": {
+    "dns_port": 53,
+    "ui_http_port": 5380,
+    "ui_https_port": 53443
+  },
+  "schema": {
+    "dns_port": "port",
+    "ui_http_port": "port",
+    "ui_https_port": "port"
+  },
   "host_network": true
 }
