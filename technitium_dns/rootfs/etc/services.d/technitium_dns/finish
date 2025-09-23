@@ -1,3 +1,2 @@
 #!/usr/bin/with-contenv sh
-. /opt/scripts/common.sh
-log_warn "Technitium DNS wurde beendet. Container wird ggf. neu gestartet..."
+echo "[WARN] Technitium DNS wurde beendet. Container wird ggf. neu gestartet..."

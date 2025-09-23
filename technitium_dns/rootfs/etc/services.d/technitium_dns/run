@@ -1,8 +1,18 @@
 #!/usr/bin/with-contenv sh
-. /opt/scripts/common.sh
-. /opt/scripts/init.sh
+set -e
 
-log_info "Starte Technitium DNS Server (Custom Multi-Arch Image)..."
-log_info "Persistenter Ordner: /data"
+# Persistent Folder /data nutzen
+if [ ! -d /data ]; then
+    mkdir -p /data
+fi
 
-exec /app/dns/dnsserver --appdatafolder /data
+# /etc/dns auf /data mappen
+if [ -d /etc/dns ] && [ ! -L /etc/dns ]; then
+    rm -rf /etc/dns
+    ln -s /data /etc/dns
+fi
+
+echo "[INFO] Config folder linked: /etc/dns -> /data"
+
+# Technitium DNS starten
+exec /app/dnsserver
