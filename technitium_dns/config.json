@@ -2,7 +2,7 @@
   "name": "Technitium DNS",
   "version": "1.0.0",
   "slug": "technitium_dns",
-  "description": "Technitium DNS Server als Home Assistant Add-on (Custom Multi-Arch Image)",
+  "description": "Technitium DNS Server Add-on (Multi-Arch)",
   "url": "https://github.com/PiperNigrum/ha_addons",
   "arch": ["armv7", "aarch64", "amd64"],
   "startup": "services",
@@ -12,7 +12,8 @@
     "53/tcp": 53,
     "53/udp": 53
   },
-  "map": ["addon_config", "share"],
+  "map": ["addon_config:rw"],
   "options": {},
-  "schema": {}
+  "schema": {},
+  "image": "technitium/dns-server:latest"
 }
