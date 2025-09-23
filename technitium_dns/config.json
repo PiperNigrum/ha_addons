@@ -2,9 +2,12 @@
   "name": "Technitium DNS",
   "version": "1.0.0",
   "slug": "technitium_dns",
-  "description": "Technitium DNS Server Add-on (Multi-Arch)",
-  "url": "https://github.com/PiperNigrum/ha_addons/tree/main/technitium_dns",
-  "arch": ["armv7", "aarch64", "amd64"],
+  "description": "Technitium DNS Server Add-on",
+  "arch": [
+    "armv7",
+    "aarch64",
+    "amd64"
+  ],
   "startup": "services",
   "boot": "auto",
   "ports": {
@@ -12,8 +15,10 @@
     "53/tcp": 53,
     "53/udp": 53
   },
-  "map": ["addon_config:rw"],
+  "map": [
+    "data:rw", "addon_config:rw"
+  ],
   "options": {},
   "schema": {},
-  "image": "technitium/dns-server:latest"
+  "host_network": true
 }

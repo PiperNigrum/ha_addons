@@ -1,2 +1,3 @@
-#!/usr/bin/with-contenv sh
-echo "[WARN] Technitium DNS wurde beendet. Container wird ggf. neu gestartet..."
+#!/usr/bin/with-contenv bash
+
+/rootfs/etc/services.d/technitium_dns/scripts/log.sh "[INFO] Beende Technitium DNS Add-on"

@@ -1,13 +1,16 @@
-# Nutzt das offizielle Technitium Multi-Arch-Image
+ARG BUILD_FROM
 FROM technitium/dns-server:latest
 
-# Arbeitsverzeichnis
-WORKDIR /app
+COPY run.sh /run.sh
+COPY init.sh /init.sh
+COPY scripts/ /scripts/
 
-# Copy für Supervisor Skripte
-COPY rootfs/ /
+RUN rm -rf /etc/dns && ln -s /data /etc/dns
 
-# Startscript ausführbar machen
-RUN chmod +x /etc/services.d/technitium_dns/run /etc/services.d/technitium_dns/finish
+WORKDIR /data
 
-CMD ["/etc/services.d/technitium_dns/run"]
+RUN chmod +x /run.sh /init.sh /scripts/*.sh
+
+EXPOSE 53/tcp 53/udp 5380/tcp
+
+ENTRYPOINT ["/run.sh"]

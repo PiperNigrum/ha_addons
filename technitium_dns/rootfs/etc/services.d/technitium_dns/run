@@ -1,18 +1,11 @@
-#!/usr/bin/with-contenv sh
+#!/usr/bin/with-contenv bash
 set -e
 
-# Persistent Folder /data nutzen
-if [ ! -d /data ]; then
-    mkdir -p /data
-fi
+/rootfs/etc/services.d/technitium_dns/scripts/log.sh "[INFO] Starte Technitium DNS Add-on"
 
-# /etc/dns auf /data mappen
-if [ -d /etc/dns ] && [ ! -L /etc/dns ]; then
-    rm -rf /etc/dns
-    ln -s /data /etc/dns
-fi
+/rootfs/etc/services.d/technitium_dns/scripts/init.sh
 
-echo "[INFO] Config folder linked: /etc/dns -> /data"
+/rootfs/etc/services.d/technitium_dns/scripts/healthcheck.sh
 
-# Technitium DNS starten
-exec /app/dnsserver
+/rootfs/etc/services.d/technitium_dns/scripts/log.sh "[INFO] Starte Technitium DNS Server"
+exec /app/TechnitiumDnsServer
