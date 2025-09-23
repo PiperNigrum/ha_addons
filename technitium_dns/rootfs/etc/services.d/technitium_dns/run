@@ -1,11 +1,19 @@
-#!/usr/bin/with-contenv bash
-set -e
+  #!/usr/bin/with-contenv bash
+  set -e
 
-/rootfs/etc/services.d/technitium_dns/scripts/log.sh "[INFO] Starte Technitium DNS Add-on"
+  /rootfs/etc/services.d/technitium_dns/scripts/log.sh "[INFO] Starte Technitium DNS Add-on"
 
-/rootfs/etc/services.d/technitium_dns/scripts/init.sh
+  /rootfs/etc/services.d/technitium_dns/scripts/init.sh
 
-/rootfs/etc/services.d/technitium_dns/scripts/healthcheck.sh
+  /rootfs/etc/services.d/technitium_dns/scripts/healthcheck.sh
 
-/rootfs/etc/services.d/technitium_dns/scripts/log.sh "[INFO] Starte Technitium DNS Server"
-exec /app/TechnitiumDnsServer
+  # Symlink sicherstellen
+  if [ ! -L /etc/dns ]; then
+      rm -rf /etc/dns
+      ln -s /data /etc/dns
+      /rootfs/etc/services.d/technitium_dns/scripts/log.sh "[INFO] Symlink /etc/dns -> /data gesetzt"
+  fi
+
+  /rootfs/etc/services.d/technitium_dns/scripts/log.sh "[INFO] Starte Technitium DNS Server"
+  exec /app/TechnitiumDnsServer
+  
