@@ -1,6 +1,6 @@
 {
   "name": "Technitium DNS",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "slug": "technitium_dns",
   "description": "Technitium DNS Server Add-on",
   "arch": [
@@ -17,7 +17,7 @@
   },
   "map": [
     "data:rw",
-    "addon_configs:rw"
+    "addon_config:rw"
   ],
   "options": {},
   "schema": {},
