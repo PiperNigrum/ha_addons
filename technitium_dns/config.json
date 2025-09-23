@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "slug": "technitium_dns",
   "description": "Technitium DNS Server Add-on (Multi-Arch)",
-  "url": "https://github.com/PiperNigrum/ha_addons",
+  "url": "https://github.com/PiperNigrum/ha_addons/tree/main/technitium_dns",
   "arch": ["armv7", "aarch64", "amd64"],
   "startup": "services",
   "boot": "auto",
