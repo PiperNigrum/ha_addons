@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+echo "[RUN] Starting ActualBudget2MQTT..."
+node /actualbudget2mqtt.js

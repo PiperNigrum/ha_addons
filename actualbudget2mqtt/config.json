@@ -1,0 +1,31 @@
+{
+  "name": "ActualBudget2MQTT",
+  "version": "1.0.0",
+  "slug": "actualbudget2mqtt",
+  "description": "Publishes Actual Budget categories to MQTT",
+  "startup": "services",
+  "boot": "auto",
+  "init": false,
+  "panel_icon": "mdi:currency-eur",
+  "options": {
+    "mqtt_host": "mqtt.local",
+    "mqtt_port": 1883,
+    "mqtt_user": "mqttuser",
+    "mqtt_password": "mqttpassword",
+    "actual_url": "http://actual-server:5006",
+    "actual_password": "actualpassword",
+    "actual_sync_id": "your-sync-id",
+    "actual_month": "2024-09"
+  },
+  "schema": {
+    "mqtt_host": "str",
+    "mqtt_port": "int",
+    "mqtt_user": "str",
+    "mqtt_password": "str",
+    "actual_url": "str",
+    "actual_password": "str",
+    "actual_sync_id": "str",
+    "actual_month": "str"
+  },
+  "arch": ["amd64", "armv7", "arm64"]
+}

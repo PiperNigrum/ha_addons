@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+echo "[FINISH] ActualBudget2MQTT finished."
