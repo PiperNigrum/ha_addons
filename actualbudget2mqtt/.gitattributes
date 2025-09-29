@@ -1,0 +1,4 @@
+
+*.sh text eol=lf
+*/run text eol=lf
+*/finish text eol=lf

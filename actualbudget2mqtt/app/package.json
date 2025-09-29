@@ -1,0 +1,15 @@
+{
+  "name": "actualbudget2mqtt",
+  "version": "1.2.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "Publish Actual Budget categories to MQTT with HA Discovery",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@actual-app/api": "^25.9.0",
+    "mqtt": "^5.10.0"
+  }
+}
