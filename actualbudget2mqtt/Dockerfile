@@ -1,12 +1,24 @@
+# --- Dockerfile ---
+
+# Home Assistant-Add-ons verwenden i. d. R. dieses Muster:
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-ENV LANG C.UTF-8
+# Linter: "ENV key=value" statt "ENV key value"
+ENV LANG=C.UTF-8
 
+# Node.js + npm (für Alpine-Base; bei Debian entsprechend apt-get)
 RUN apk add --no-cache nodejs npm
 
-COPY rootfs / 
+# ---- App deployen ----
+WORKDIR /opt/actualbudget2mqtt
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY index.js ./
 
-WORKDIR /
+# ---- s6-Dienstdateien ----
+COPY rootfs/ /
 
-CMD [ "/run.sh" ]
+# Rechte & Zeilenenden absichern (falls Git sie nicht mitliefert)
+RUN chmod +x /etc/services.d/actualbudget2mqtt/run \
+ && sed -i 's/\r$//' /etc/services.d/actualbudget2mqtt/run
