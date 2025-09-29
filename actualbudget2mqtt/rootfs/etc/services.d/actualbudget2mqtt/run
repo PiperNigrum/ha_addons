@@ -1,6 +1,5 @@
-
-#!/command/with-contenv bashio
-set -euo pipefail
+#!/bin/sh
+set -eu
 
 bashio::log.info "Starting ActualBudget2MQTT service ..."
 exec node /opt/actualbudget2mqtt/index.js

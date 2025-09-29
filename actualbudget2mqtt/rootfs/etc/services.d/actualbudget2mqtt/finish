@@ -1,3 +1,2 @@
-
-#!/command/with-contenv bashio
+#!/bin/sh
 bashio::log.info "Stopping ActualBudget2MQTT service ..."

@@ -1,6 +1,6 @@
 {
   "name": "actualbudget2mqtt",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "private": true,
   "type": "commonjs",
   "description": "Publish Actual Budget categories to MQTT with HA Discovery",
