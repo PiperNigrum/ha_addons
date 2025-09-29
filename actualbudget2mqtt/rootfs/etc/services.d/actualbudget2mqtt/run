@@ -1,4 +1,7 @@
 #!/command/with-contenv bashio
+set -euo pipefail
 
-echo "[RUN] Starting ActualBudget2MQTT..."
-node /actualbudget2mqtt.js
+bashio::log.info "Starting ActualBudget2MQTT service ..."
+
+# Node-App starten (dein index.js liest /data/options.json)
+exec node /opt/actualbudget2mqtt/index.js
