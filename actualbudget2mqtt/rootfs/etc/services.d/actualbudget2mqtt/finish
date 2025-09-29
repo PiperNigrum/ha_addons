@@ -1,2 +1,3 @@
-#!/usr/bin/env bash
+#!/command/with-contenv bashio
+
 echo "[FINISH] ActualBudget2MQTT finished."

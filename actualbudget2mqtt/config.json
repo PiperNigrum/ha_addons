@@ -1,6 +1,6 @@
 {
   "name": "ActualBudget2MQTT",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "slug": "actualbudget2mqtt",
   "description": "Publishes Actual Budget categories to MQTT with HA Discovery",
   "startup": "services",

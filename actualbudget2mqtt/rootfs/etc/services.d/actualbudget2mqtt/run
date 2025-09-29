@@ -1,3 +1,4 @@
-#!/usr/bin/env bash
+#!/command/with-contenv bashio
+
 echo "[RUN] Starting ActualBudget2MQTT..."
 node /actualbudget2mqtt.js
